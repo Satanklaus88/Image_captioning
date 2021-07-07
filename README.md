@@ -18,19 +18,19 @@
 
 При обучении сети были проведены попытки изменять TeacherForcing (вероятность при генерации получать на вход либо предыдущее сгенерированное слово, либо слово из исходного описания), но это не привело к каким-то конкретным результатам и в финальном варианте этот параметр был зафиксирован равным 1 (100% использование описания в генерации при обучении).
 
-![](\pics\base_model.png)
+![](pics/base_model.png)
 
 ## Базовая модель с Attention
 
 К базовой модели был добавлен механизм Attention; был использован Bahdanau(Additive) Attention для предоставленных исходных данных. Полученный взвешенный вектор изображения конкатенировался с эмбеддингами слова при подаче в LSTM.
 
-![](\pics\att20epochs.png)
+![](pics/att20epochs.png)
 
 ## Датасет FlickR30K
 
 С данным датасетом была опробована как энкодер модель MobileNetV2, в которой использовался и обученный линейный слой размерности 1000, и обучаемый в процессе на 2048. Хороших результатов добиться не удалось, модель недообучилась, судя по генерируемым ею описаниям. 
 
-![mobilenetflickr](\pics\mobilenetflickr.png)
+![mobilenetflickr](pics/mobilenetflickr.png)
 
 **Возможные дальнейшие улучшения:**
 
@@ -42,7 +42,7 @@
 
 Также попробовал взять предложенный Inception как энкодер; при обучении решил (на основе опыта выполнения домашних работ по курсу) не обращать внимание на растущий лосс на валидации и учить сеть дальше, ориентируясь лишь на лосс на трейне.
 
-![mobilenetflickr](\pics\flickrinception.png)
+![mobilenetflickr](pics/flickrinception.png)
 
 Несмотря на такие графики, модель писала достаточно осмысленные описания (иногда :) (см. ниже).
 
@@ -52,7 +52,7 @@
 
 #### Сгенерированные описания:
 
-<img src="\pics\1.jpg" style="zoom:50%;" /> 
+<img src="pics/1.jpg" style="zoom:50%;" /> 
 
 **"Жадный" вариант:** 
 
@@ -66,29 +66,31 @@ There is a man on a skateboard jumping on the air as another person extending hi
 
 Players jumping on a ramp of practicing a scenery
 
- A man jumps high over a pile of rocks 
+A man jumps high over a pile of rocks 
 
 A skateboarder performing tricks on a skateboard close to legs
 
-<img src="\pics\2.jpg" style="zoom:50%;" /> 
+---
+<img src="pics/2.jpg" style="zoom:50%;" /> 
 
-**"Жадный" вариант:** 
+**"Жадный" вариант:**
 
 A cat is sitting on a couch next to a stuffed animal
 
-**Сэмплирование:**  
+**Сэмплирование:** 
 
-A cat that is holding a yellow and white cat 
+A cat that is holding a yellow and white cat
 
-A cat is wearing a hat and blue tie 
+A cat is wearing a hat and blue tie
 
 A cat is sitting in a chair wearing a tie 
 
-A cat with a hat is standing next to a stuffed animal 
+A cat with a hat is standing next to a stuffed animal
 
 A cat laying on a couch with a remote control
 
- <img src="\pics\3.jpg" style="zoom:100%;" />
+---
+ <img src="pics/3.jpg" style="zoom:100%;" />
 
 **"Жадный" вариант:** 
 
@@ -106,7 +108,8 @@ A baby in a white shirt eating a carrot
 
 A black and white photo of a person with a toothbrush
 
-<img src="\pics\4.jpg" style="zoom:100%;" /> 
+---
+<img src="pics/4.jpg" style="zoom:100%;" /> 
 
 **"Жадный" вариант:** 
 
